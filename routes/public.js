@@ -11,10 +11,11 @@ module.exports = [
   {
     path: `${version}/auth/register`,
     controllers: require("../controllers/Auth").register,
+    validator: require("../controllers/Auth/validator").registerValidator, // global validator
     method: "post",
   },
   {
-    path: `${version}/auth/logout/:id`,
+    path: `${version}/auth/logout`,
     controllers: require("../controllers/Auth").logout,
     method: "get",
   },

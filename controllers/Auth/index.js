@@ -16,9 +16,9 @@ module.exports = {
       .then((result) => {
         if (!result) throw new Error("User not existt");
 
-        if (result && result.dataValues.is_login) {
-          throw new Error("User already login");
-        }
+        // if (result && result.dataValues.is_login) {
+        //   throw new Error("User already login");
+        // }
 
         return result;
       })
@@ -34,7 +34,7 @@ module.exports = {
           .then((status) => {
             if (!status[0]) throw new Error("Something wrong");
 
-            const token = jwt.sign(req.body, process.env.APP_SECRET_KEY, {
+            const token = jwt.sign({...req.body, id: result.dataValues.id}, process.env.APP_SECRET_KEY, {
               expiresIn: "24h",
             });
 
@@ -98,25 +98,23 @@ module.exports = {
 
   // get auth/logout
   logout: (req, res) => {
-    const { id } = req.params;
+    // model.users
+    //   .update({ is_login: 0 }, { where: { id } })
+    //   .then((result) => {
+    //     if (!result[0]) throw new Error("Failed logout");
 
-    model.users
-      .update({ is_login: 0 }, { where: { id } })
-      .then((result) => {
-        if (!result[0]) throw new Error("Failed logout");
-
-        res.json({
-          status: "OK",
-          messages: "Logout success",
-          data: null,
-        });
-      })
-      .catch((error) =>
-        res.status(400).json({
-          status: "ERROR",
-          messages: error.message,
-          data: null,
-        })
-      );
+    //     res.json({
+    //       status: "OK",
+    //       messages: "Logout success",
+    //       data: null,
+    //     });
+    //   })
+    //   .catch((error) =>
+    //     res.status(400).json({
+    //       status: "ERROR",
+    //       messages: error.message,
+    //       data: null,
+    //     })
+    //   );
   },
 };

@@ -7,4 +7,16 @@ module.exports = [
     method: "get",
     cache: false,
   },
+  {
+    path: `${version}/space`,
+    controllers: require("../controllers/Space").addSpace,
+    method: "post",
+    cache: false,
+  },
+  {
+    path: `${version}/space`,
+    controllers: require("../controllers/Space").getSpaceDetail,
+    method: "get",
+    cache: false,
+  },
 ];
