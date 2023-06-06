@@ -4,7 +4,7 @@
 
 how to install in yout local, you can clone this repo with
 
-``` git clone https://github.com/kubi-codes/express-starterkit.git ```
+``` git clone https://github.com/Rachmad22/linkive.git ```
 
 or you can click <b>use this template</b> and customize with your project.
 
